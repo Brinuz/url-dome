@@ -1,21 +1,27 @@
-# Urldome
+# Url Dome API
 
-**TODO: Add description**
+Migration of my url-dome originally developed using Go. 
+
+The idea behind this migration is to learn about Elixir and Functional Programming in general.
+
+Tried to apply the main idea behind Clean Architecture by splitting the project between `use cases`, `external interfaces` and `entities` and avoid some coupling between the modules using behaviours and configurations
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `urldome` to your list of dependencies in `mix.exs`:
+Assuming you have Elixir installed.
 
-```elixir
-def deps do
-  [
-    {:urldome, "~> 0.1.0"}
-  ]
-end
+Getting dependencies and compiling:
+```
+mix deps.get
+mix compile
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/urldome](https://hexdocs.pm/urldome).
+Running all the tests:
+```
+mix test
+```
 
+Running:
+```
+mix run --no-halt
+```
