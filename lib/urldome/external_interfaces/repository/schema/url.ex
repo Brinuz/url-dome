@@ -11,5 +11,6 @@ defmodule Urldome.ExternalInterfaces.Repository.Schema.Url do
     struct
     |> cast(params, [:hash, :url])
     |> validate_required([:hash, :url])
+    |> unique_constraint(:hash)
   end
 end

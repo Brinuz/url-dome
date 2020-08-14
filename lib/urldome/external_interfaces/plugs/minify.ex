@@ -1,21 +1,16 @@
 defmodule Urldome.ExternalInterfaces.Plugs.Minify do
   import Plug.Conn
-  alias Urldome.UseCases
+  @minify Application.get_env(:urldome, :minify)
 
-  defmodule BadRequestError do
-    @moduledoc """
-    Error raised when a required field is in the body is missing.
-    """
-
-    defexception message: ""
-  end
-
+  @spec minify(Plug.Conn.t()) :: Plug.Conn.t()
   def minify(%Plug.Conn{params: params} = conn) do
-    case params do
-      %{"URL" => url} -> UseCases.Minify.run(url, 1)
-      _ -> raise(BadRequestError)
+    with %{"URL" => url} <- params,
+         {:ok, hash} <- @minify.run(url, 3) do
+      send_resp(conn, 200, Jason.encode!(%{url: url, hash: hash}))
+    else
+      {:error, :required} -> send_resp(conn, 422, "Missing required fields")
+      {:error, :unknown} -> send_resp(conn, 422, "Unknown error, try again")
+      _ -> send_resp(conn, 400, "Failed to parse body")
     end
-
-    send_resp(conn, 204, "")
   end
 end
