@@ -9,3 +9,7 @@ Mox.defmock(Urldome.ExternalInterfaces.Repository.RepoMock,
 Mox.defmock(Urldome.UseCases.MinifyMock,
   for: Urldome.UseCases.MinifyBehaviour
 )
+
+Mox.defmock(Urldome.UseCases.RedirectMock,
+  for: Urldome.UseCases.RedirectBehaviour
+)

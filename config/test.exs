@@ -9,3 +9,4 @@ config :urldome, Urldome.ExternalInterfaces.Repository.Postgres,
 config :urldome, repo: Urldome.ExternalInterfaces.Repository.RepoMock
 config :urldome, randomizer: Urldome.ExternalInterfaces.Randomizer.HashMock
 config :urldome, minify: Urldome.UseCases.MinifyMock
+config :urldome, redirect: Urldome.UseCases.RedirectMock

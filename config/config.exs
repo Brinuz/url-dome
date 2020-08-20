@@ -9,5 +9,6 @@ config :urldome, ecto_repos: [Urldome.ExternalInterfaces.Repository.Postgres]
 config :urldome, repo: Urldome.ExternalInterfaces.Repository.Repo
 config :urldome, randomizer: Urldome.ExternalInterfaces.Randomizer.Hash
 config :urldome, minify: Urldome.UseCases.Minify
+config :urldome, redirect: Urldome.UseCases.Redirect
 
 import_config "#{Mix.env()}.exs"
